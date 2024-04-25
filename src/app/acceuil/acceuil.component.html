@@ -1,1 +1,50 @@
 <p>acceuil works!</p>
+<ul>
+    
+
+
+   <div class="container">
+    
+    <button mat-raised-button color="primary" routerLink="/ajout-article">Ajouter un article</button>
+        <div class="row">
+            @for (articles of listeArticles; track $index){
+           
+            <div class="col-6">
+
+                <mat-card class="mt-4">
+                    <mat-card-header>
+                    <div mat-card-avatar class=""></div>
+                    <mat-card-title class="text-cente mt-4 ">{{articles.nom}}</mat-card-title>
+                    <mat-card-subtitle>{{articles.prix}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img
+                    mat-card-image src= "http://localhost/testangular/uploads/{{articles.image}}" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                    <p class="my-4">
+                        {{articles.description}}
+                    </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-flat-button color="primary" class="mt-4 p-4">
+                        <!-- Pour les icônes, allez sur Google Fonts et n'oubliez pas de les télécharger depuis le composant Angular. -->
+                            <mat-icon>add_shopping_cart</mat-icon>
+                            Ajouter au Panier</button>
+                    <button mat-button class="mt-4 text-warning">
+                    <i class="fa-sharp fa-solid fa-pencil"></i>
+                        Modifier</button>
+                    <button mat-button color="warn" class="mt-4 text-danger">
+                        <i class="fa-sharp fa-solid fa-trash"></i>
+                        Supprimer</button>
+                    </mat-card-actions>
+                </mat-card> 
+
+            </div>   
+         }
+        </div>
+    </div>
+
+    
+    
+   
+    
+</ul>

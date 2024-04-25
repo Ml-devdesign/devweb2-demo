@@ -1,1 +1,40 @@
 <p>connexion works!</p>
+
+<form action="" class="formulaire" (ngSubmit)="onConnexion()" [formGroup]="formulaire"> 
+    <!-- prend des parenthese = "methode" quand c'est entren donc un evenements on met des parenthese quand c'est sortant on mes des crochets  -->
+    <mat-card>
+        <mat-card-content>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex. JohnDo@g.com" formControlName="email" > <!-- //value="Viginie" -->
+           
+            @if(formulaire.get('email')?.hasError('required')){
+                
+                <mat-error>Email is required</mat-error>
+
+            }
+            @if(formulaire.get('email')?.hasError('email')){
+                <mat-error>Not a valid email</mat-error>
+
+            }
+            <!-- Affichage du message d'erreur si le mot de passe est invalide -->
+            <!-- Message d'erreur si le mot de passe est requis mais non fourni -->
+        </mat-form-field>
+    </mat-card-content>
+
+        <br>
+        <mat-card-content>
+        <mat-form-field class="example-full-width">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput placeholder="Password" formControlName="password">    <!-- //value="Viginie"    formControlName="password" du constructeur dans la class ConnexionComponent-->
+        <mat-error>Le mot de Passe est Obligatoire</mat-error>
+        <!-- Ne s'affiche que si password vide apres validation -->
+        </mat-form-field>
+        </mat-card-content>
+        
+        <br>
+        <mat-card-content>
+        <button type="submit" mat-raised-button color="warn">se connecter</button>
+     </mat-card-content>
+    </mat-card>
+</form>

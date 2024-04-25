@@ -1,0 +1,184 @@
+  Liste des commandes
+  site Source = https://www.ganatan.com/tutorials/demarrer-avec-angular-cli
+
+Pour connaitre les commandes deux liens officiels
+
+    https://github.com/angular/angular-cli/wiki
+    https://angular.io/cli
+
+
+Voici la liste de celles-ci que nous allons examiner
+
+    Installation/Desinstallation d'Angular' CLI
+    ng new [project-name]
+     
+    Création d'un projet Angular'
+    ng new [project-name]
+     
+    Création d'un composant'
+    ng generate component [component-name]
+     
+    Création d'un module'
+    ng generate module [component-name]
+     
+    Création d'une classe'
+    ng generate class [class-name]
+
+    creation d'un' fichier [dist]
+    ng dist
+
+ 
+ 
+ Création d'un projet angular'
+
+Syntaxe (2 Méthodes)
+
+    ng new [project-name] [options]
+    ng n [project-name] [options]
+
+    new ou n: Commande Angular CLI (création d'application')
+    project-name : Nom du projet Angular (le nom est arbitraire)
+    options : Adapte la commande
+     
+
+
+Action
+
+    Crée un nouvel espace de travail (Workspace) et une nouvelle application Angular.
+
+
+Options
+
+    routing
+    Permet de gérer le routing
+    Crée automatiquement un fichier app-routing.module.ts
+     
+    defaults
+    Permet de sélectionner automatiquement les options par défaut
+    (pas de routing , Type CSS)
+     
+
+# Générer un projet appelé angular-starter avec choix manuel des options
+ng new angular-starter
+
+# Générer un projet appelé angular-starter avec options par défaut
+ng new angular-starter --defaults
+
+# Générer un projet appelé angular-starter avec Gestion du routing
+ng new angular-starter --routing
+
+Création d'un composant'
+
+Syntaxe (2 méthodes)
+
+    ng generate component [component-name] [options]
+    ng g c [component-name] [options]
+
+    generate ou g: Commande Angular CLI
+    component ou c : création d'un composant'
+    component-name : Nom du composant Angular (le nom est arbitraire)
+    options : permet d'adapter la création de composant'
+
+Action
+
+    Crée un composant à l'emplacement' indiqué
+
+
+Exemples
+
+    ng generate component home
+
+    Crée un répertoire home dans app
+    Crée 4 fichiers dans le répertoire app/home
+    - home.component.css
+    - home.component.html
+    - home.component.spec.ts
+    - home.component.ts
+    Modifie le fichier app.module.ts
+    - rajout de HomeComponent dans declarations
+     
+    ng generate component components/contact
+
+    Crée un répertoire components dans app
+    Crée un répertoire contact dans app/components
+    Crée 4 fichiers dans le répertoire app/components/contact
+    - contact.component.css
+    - contact.component.html
+    - contact.component.spec.ts
+    - contact.component.ts
+    Modifie le fichier app.module.ts
+    - rajout de ContactComponent dans declarations
+     
+
+# Création d'un composant home dans app
+ng generate component home
+
+# Création d'un composant contact dans le répertoire app/modules
+ng generate component modules/contact
+
+Création d'un module'
+
+Syntaxe (2 méthodes)
+
+    ng generate module [module-name] [options]
+    ng g m [module-name] [options]
+
+    generate ou g: Commande Angular CLI
+    module ou m : création d'un module'
+    module-name : Nom du module Angular (le nom est arbitraire)
+    options : permettant d'adapter la création de module'
+
+Exemples
+
+    ng generate module home
+    Crée un répertoire home dans app
+    Crée 1 fichier dans le répertoire app/home
+    - home.module.ts
+     
+    ng generate module home --flat
+    Crée 1 fichier dans le répertoire app
+    - home.module.ts
+     
+    ng generate module modules/contact
+    Crée un répertoire modules dans app
+    Crée un répertoire contact dans app/modules
+    Crée 1 fichier dans le répertoire app/modules/contact
+    - contact.module.ts
+     
+    ng generate module modules/contact --flat
+    Crée un répertoire modules dans app
+    Crée 1 fichier dans le répertoire app/modules
+    - contact.module.ts
+
+# Création d'un module home dans app , création d'un répertoire home
+ng generate module home
+
+# Création d'un module contact dans le répertoire app/modules
+ng generate module modules/contact
+
+# Création d'un module home dans app, pas création d'un répertoire home
+ng generate module home --flat
+
+# Création d'un module contact dans le répertoire app/modules
+ng generate module modules/contact --flat
+
+Création d'une classe'
+
+Syntaxe (2 méthodes)
+
+    ng generate class [class-name]
+
+    generate ou g: Commande Angular CLI
+    class : création d'une class'
+    class-name : Nom du module Angular (le nom est arbitraire)
+
+Exemples
+
+    ng generate class data
+    Crée 2 fichiers dans le répertoire src/app
+    - data.ts
+    - data.spec.ts
+
+# Création d'une classe Data
+ng generate class data
+

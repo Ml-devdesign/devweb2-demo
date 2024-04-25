@@ -1,0 +1,54 @@
+<form class="formulaire form-label" (ngSubmit)="onSubmit()" [formGroup]="formulaire">
+
+        <mat-form-field>
+            <mat-label>Nom</mat-label>
+            <input matInput placeholder="Ex: Expresso" formControlName="nom"/>
+            @if(formulaire.get('nom')?.hasError('required')){
+                <mat-error>Le nom est obligatoire</mat-error>
+            }
+            @if(formulaire.get('nom')?.hasError('minlength')){
+                <mat-error>3 Caractere obligatoire </mat-error>
+            }
+            
+            @if(formulaire.get('nom')?.hasError('maxlength')){
+                <mat-error>Max 100 Caractere </mat-error>
+            }
+            
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Ex: Description du café" formControlName="description"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nom</mat-label>
+            <input [min]="prixMinimum" matInput type="number" formControlName="prix"/>
+            @if(formulaire.get('prix')?.hasError('min')){
+            <mat-error>Le prix doit etre positif</mat-error>
+            }
+        </mat-form-field>
+
+        
+        
+        <!-- <div class="example-button-container d-flex justify-content-center p-2 ">
+            <input #selecteurFichier type="file" (change)="onFichierSelectionne($event)">
+            <button mat-mini-fab color="primary" (click)="selecteurFichier.click()" type="button">
+                <mat-icon>Attache_files</mat-icon>
+               
+            </button> 
+            <span> le Fichier selectionner</span>
+            
+        </div> -->
+
+        <div style="display: flex; align-items: center ">
+            <input #selecteurFichier style="display: none" type="file" (change)="onFichierSelectionne($event)" />
+            <button mat-mini-fab color="primary" (click)="selecteurFichier.click()" type="button">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+            <span style="margin-left: 0.5em">{{this.fichierSelectionne ? this.fichierSelectionne.name : "Aucun Fichier Selectionnee" }}</span>
+        </div>
+
+        <button  mat-raised-button color="primary" type="submit">Ajouter article</button>
+
+</form>
