@@ -42,13 +42,29 @@
         </div> -->
 
         <div style="display: flex; align-items: center ">
+            <!-- -->
+            @if(urlImage){
+            <img style=" width: 100px; object-fit: cover;" src="http://backendangular/upload/{{urlImage}}" />
+            }
+            
+            @if(miniature){
+            <img style=" width: 100px; object-fit: cover;" [attr.src]="miniature" />
+            }
+            
+            @if(urlImage || fichierSelectionne){
+            <button mat-mini-fab color="warn" (click)=" onSuppressionImage()"
+                type="button"><!--permet d'ajouter une icone poubelle-->
+                <mat-icon>delete</mat-icon>
+            </button>
+            }
+
             <input #selecteurFichier style="display: none" type="file" (change)="onFichierSelectionne($event)" />
             <button mat-mini-fab color="primary" (click)="selecteurFichier.click()" type="button">
                 <mat-icon>attach_file</mat-icon>
             </button>
-            <span style="margin-left: 0.5em">{{this.fichierSelectionne ? this.fichierSelectionne.name : "Aucun Fichier Selectionnee" }}</span>
+            <span style="margin-left: 0.5em">{{this.fichierSelectionne ? this.fichierSelectionne.name : urlImage ? "Modifier le fichier " : "Aucun Fichier Selectionnee" }}</span>
         </div>
 
-        <button  mat-raised-button color="primary" type="submit">Ajouter article</button>
+        <button  mat-raised-button color="primary" type="submit"> {{id == null ? "Ajouter article" : "Modifier article"}}</button>
 
 </form>

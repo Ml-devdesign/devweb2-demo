@@ -29,12 +29,14 @@
                         <!-- Pour les icônes, allez sur Google Fonts et n'oubliez pas de les télécharger depuis le composant Angular. -->
                             <mat-icon>add_shopping_cart</mat-icon>
                             Ajouter au Panier</button>
-                    <button mat-button class="mt-4 text-warning">
-                    <i class="fa-sharp fa-solid fa-pencil"></i>
-                        Modifier</button>
-                    <button mat-button color="warn" class="mt-4 text-danger">
-                        <i class="fa-sharp fa-solid fa-trash"></i>
-                        Supprimer</button>
+                        
+                        <button mat-button class="mt-4 text-warning" [routerLink]="['/modifier-article', articles.id]">
+                                <i class="fa-sharp fa-solid fa-pencil"></i>
+                            Modifier</button>
+                        
+                            <button mat-button color="warn" class="mt-4 text-danger" (click)="onSuppressionArticle(articles.id)">
+                                <i class="fa-sharp fa-solid fa-trash"></i>
+                            Supprimer</button>
                     </mat-card-actions>
                 </mat-card> 
 

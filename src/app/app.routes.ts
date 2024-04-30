@@ -9,6 +9,8 @@ export const routes: Routes = [
     { path: 'connexion', component: ConnexionComponent },
 
     { path: 'ajout-article', component: EditArticleComponent },
+    { path: 'modifier-article/:id', component: EditArticleComponent },
+
     { path: '', redirectTo: 'acceuil', pathMatch: 'full' },//configuration doc angular
     { path: '**', component: PageNonTrouveComponent }//Ajouter un modèle pour la page non trouvée, ** avec n'importe quels caractères ou n'importe quoi.
 
