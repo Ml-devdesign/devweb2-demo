@@ -81,32 +81,45 @@ export class EditArticleComponent {
 
   onSubmit() {
     if (this.formulaire.valid) {
-      const donnees: FormData = new FormData();
 
-      const article = this.formulaire.value;
-      article.imageSupprime = this.imageSupprime;
+      const jwt = localStorage.getItem('jwt');
 
-      donnees.append('article', JSON.stringify(article));
+      if (jwt != null) {
 
-      if (this.fichierSelectionne) {
-        donnees.append('image', this.fichierSelectionne);
+        const donnees: FormData = new FormData();
+
+        const article = this.formulaire.value;
+        article.imageSupprime = this.imageSupprime;
+
+        donnees.append('article', JSON.stringify(article));
+
+        if (this.fichierSelectionne) {
+          donnees.append('image', this.fichierSelectionne);
+        }
+        console.log("Soumission Formulaire");
+
+        const url = this.id == null ?
+          "http://testangular/ajout-articles.php" : `http://testangular/modifier-article.php?id=${this.id}`;
+
+        this.http
+          .post(
+            url,
+            donnees, {
+            headers: { Authorization: jwt },
+          })
+          .subscribe({
+            next: (resultat) => this.router.navigateByUrl('/acceuil'),
+            error: (resultat) =>
+              alert(
+                resultat.error.message
+                  ? resultat.error.message
+                  : 'Erreur inconnue, contactez votre administrator'
+              ),
+          });
+      } else {
+        alert('Vous devez être connecté pour effectuer cette action');
+        return;
       }
-      console.log("Soumission Formulaire");
-
-      const url = this.id == null ?
-        "http://testangular/ajout-articles.php" : `http://testangular/modifier-article.php?id=${this.id}`;
-
-      this.http
-        .post(url, donnees)
-        .subscribe({
-          next: (resultat) => this.router.navigateByUrl('/acceuil'),
-          error: (resultat) =>
-            alert(
-              resultat.error.message
-                ? resultat.error.message
-                : 'Erreur inconnue, contactez votre administrator'
-            ),
-        });
     }
   }
   onFichierSelectionne(evenement: any) {

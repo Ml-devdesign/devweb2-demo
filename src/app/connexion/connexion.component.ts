@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connexion',
@@ -19,6 +20,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class ConnexionComponent {
   generateurFormulaire: FormBuilder = inject(FormBuilder)
   http: HttpClient = inject(HttpClient);
+  router: Router = inject(Router);
 
   formulaire: FormGroup = this.generateurFormulaire.group({
     email: ['', [Validators.required, Validators.email]], // Champ email avec validation requise et validator.email d'une adress email valide requise possibilité d'ajouter le pattern
@@ -32,7 +34,10 @@ export class ConnexionComponent {
         'http://testangular/connexion.php',
         this.formulaire.value)
 
-        .subscribe((resultat) => localStorage.setItem('jwt', resultat.jwt))
+        .subscribe((resultat) => {
+          localStorage.setItem('jwt', resultat.jwt);
+          this.router.navigateByUrl("/acceuil")
+        });
 
     }
     //   console.log('Formulaire Valide. Connexion en cours...');// Affichage d'un message dans la console lors de la connexion
